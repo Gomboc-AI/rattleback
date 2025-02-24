@@ -62,6 +62,15 @@ scanner -->|Reviews| rattleback-fork
 scanner -->|Alerts| User
 ```
 
+### IaC Benchmark Comparisons
+
+Benchmarks provide recommendations based on a security framework.  While they might be free they are generally not public.  Therefore we will encurage users to signup to get the actual benchmark.  What we will include is snippets of what we know will create an object that will fail the audit and then the solution that should be used instead.
+
+Anything important will be documented in the `README.md`.
+
+> [!WARNING]
+> In most cases these will be snippets of IaC instead of fully deployable IaC.
+
 ## Directory layout
 
 In order to keep things organized the directory layout is as follows.
@@ -70,11 +79,19 @@ In order to keep things organized the directory layout is as follows.
     - `<tool>` - The tool needed to apply the test case (i.e., `terraform`).
         - `<test case>` - The test case itself.  The name should be hyphen delimited, and descriptive of the issue being created.
 
+or
+
+- `<benchmark / Framework>` - A 3rd party Benchmark or security framework
+    - `[<provider>]` - optional, and only for multi-provider
+        - `<name>` - A humanized name / summary of the
+            - `<tool>` - The tool needed to apply the test case
+                - `<solution[N]>` - One or more valid solutions
+
 Each level can have a README.md that describes what is being done, and any pre-conditions (aside from the account) that are needed.
 
 ## Test Case
 
-This repo is intended to be a realistic set of test cases.  Each test case is meant to be fully self-standing meaning that the unit under test is the only one that should have security issues.
+This repo is intended to be a realistic set of test cases.  Each test case is meant to be fully self-standing; meaning that the unit under test is the only one that should have security issues.
 
 If the tooling supports it, the unit under test should be call `uut` or should have a name, description, or tag that includes `uut` in some way.  The test-case name should also be included in all the rendered objects in some way so that they are easy to find after the fact; especially in cases of cleanup failures.
 
