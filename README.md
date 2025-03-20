@@ -62,9 +62,13 @@ scanner -->|Reviews| rattleback-fork
 scanner -->|Alerts| User
 ```
 
-### IaC Benchmark Comparisons
+### Security Framework Benchmark
 
-Benchmarks provide recommendations based on a security framework.  While they might be free they are generally not public.  Therefore we will encurage users to signup to get the actual benchmark.  What we will include is snippets of what we know will create an object that will fail the audit and then the solution that should be used instead.
+Benchmarks provide recommendations based on a security framework.  They are most easily tested by using a IaC that would create an object that would fail the audit of the recommendation.  Then provide a solution that satisfies the recommendation.
+
+In many cases security frameworks, and/or benchmarks are not public and must be signed up for or purchased.  In such cases the README.md will provide locaction of signup / pruchase and the IDs of the recommendations, but not the detail.  If the framework or benchmark is public then
+
+Therefore we will encurage users to signup to get the actual benchmark.  What we will include is snippets of what we know will create an object that will fail the audit and then the solution that should be used instead.
 
 Anything important will be documented in the `README.md`.
 
@@ -78,14 +82,7 @@ In order to keep things organized the directory layout is as follows.
 - `<provider>` - The infrastructure provider where the test-case can be applied.  Rarely if ever will there be a test case that spans providers.
     - `<tool>` - The tool needed to apply the test case (i.e., `terraform`).
         - `<test case>` - The test case itself.  The name should be hyphen delimited, and descriptive of the issue being created.
-
-or
-
-- `<benchmark / Framework>` - A 3rd party Benchmark or security framework
-    - `[<provider>]` - optional, and only for multi-provider
-        - `<name>` - A humanized name / summary of the
-            - `<tool>` - The tool needed to apply the test case
-                - `<solution[N]>` - One or more valid solutions
+            - `<solution[N]>` - One or more valid solutions
 
 Each level can have a README.md that describes what is being done, and any pre-conditions (aside from the account) that are needed.
 
@@ -94,6 +91,14 @@ Each level can have a README.md that describes what is being done, and any pre-c
 This repo is intended to be a realistic set of test cases.  Each test case is meant to be fully self-standing; meaning that the unit under test is the only one that should have security issues.
 
 If the tooling supports it, the unit under test should be call `uut` or should have a name, description, or tag that includes `uut` in some way.  The test-case name should also be included in all the rendered objects in some way so that they are easy to find after the fact; especially in cases of cleanup failures.
+
+### Naming Conventions
+
+Generally the test cases are going to start with the object they are primarily testing (i.e., `s3`, `cloud_sql`).  Then followed by `-` and the name of the of the test case.
+
+If possible the test case should be fully valid and could be applied.  However, there is some cases where an invalid or incomplete test case needs to be provided.  In such cases the postfix `-fragment` should be added to indicate that the test case cannot be applied.
+
+If the test case is focused on testing a security framework or security framework benchmark then it should have the name of said benchmark in it's name.
 
 ## Local Usage
 
