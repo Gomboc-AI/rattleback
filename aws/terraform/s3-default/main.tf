@@ -60,3 +60,10 @@ resource "aws_s3_object" "uut" {
   key    = "helloworld"
   source = "files/test.txt"
 }
+
+resource "aws_s3_object" "uut2" {
+  bucket = aws_s3_bucket.uut.id
+
+  key    = "testobject"
+  source = "files/test2.txt"
+}
