@@ -28,7 +28,7 @@ resource "aws_s3_bucket_ownership_controls" "uut" {
 
   rule {
     # This is needed for the ACLs to be valid
-    object_ownership = "BucketOwnerPreferred"
+    
   }
 }
 resource "aws_s3_bucket_public_access_block" "uut" {
