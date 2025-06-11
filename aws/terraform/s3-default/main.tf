@@ -28,7 +28,7 @@ resource "aws_s3_bucket_ownership_controls" "uut" {
 
   rule {
     # This is needed for the ACLs to be valid
-    
+
   }
 }
 resource "aws_s3_bucket_public_access_block" "uut" {
@@ -59,4 +59,10 @@ resource "aws_s3_object" "uut" {
 
   key    = "helloworld"
   source = "files/test.txt"
+}
+resource "aws_s3_bucket_versioning" "my_aws_s3_bucket_versioning_aws_s3_bucket_uut" {
+  bucket = aws_s3_bucket.uut.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
