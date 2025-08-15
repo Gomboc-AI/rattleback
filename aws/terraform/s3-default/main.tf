@@ -34,6 +34,7 @@ resource "aws_s3_bucket_ownership_controls" "uut" {
 resource "aws_s3_bucket_public_access_block" "uut" {
   bucket = aws_s3_bucket.uut.id
 
+  ignore_public_acls = true
 }
 
 # The ACL needs to be set in an object to ensure the access block and ownership
@@ -55,4 +56,10 @@ resource "aws_s3_object" "uut" {
 
   key    = "helloworld"
   source = "files/test.txt"
+}
+resource "aws_s3_bucket_versioning" "my_aws_s3_bucket_versioning_aws_s3_bucket_uut" {
+  bucket = aws_s3_bucket.uut.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
