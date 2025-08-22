@@ -126,37 +126,37 @@ Unguessable Details
 ```yaml
 # input
 Resources:
-    VPC:
-        Type: AWS::EC2::VPC
-        Properties:
-        CidrBlock: 10.0.0.0/16
-        EnableDnsSupport: true
-        EnableDnsHostnames: true
-        Tags:
-            - Key: Name
-              Value: !Ref EnvironmentName
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+    CidrBlock: 10.0.0.0/16
+    EnableDnsSupport: true
+    EnableDnsHostnames: true
+    Tags:
+      - Key: Name
+        Value: !Ref EnvironmentName
 ```
 
 ```yaml
 # expected
 Resources:
-    VPC:
-        Type: AWS::EC2::VPC
-        Properties:
-        CidrBlock: 10.0.0.0/16
-        EnableDnsSupport: true
-        EnableDnsHostnames: true
-        Tags:
-            - Key: Name
-              Value: !Ref EnvironmentName
-    FlowLog_for_VPC:
-        Type: AWS::EC2::FlowLog
-        Properties:
-        LogDestination: arn:aws:s3:::my_bucket/vpc/flow-logs
-        LogDestinationType: s3
-        ResourceId: !Ref VPC
-        ResourceType: VPC
-        TrafficType: ALL
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+    CidrBlock: 10.0.0.0/16
+    EnableDnsSupport: true
+    EnableDnsHostnames: true
+    Tags:
+      - Key: Name
+        Value: !Ref EnvironmentName
+  FlowLog_for_VPC:
+    Type: AWS::EC2::FlowLog
+    Properties:
+    LogDestination: arn:aws:s3:::my_bucket/vpc/flow-logs
+    LogDestinationType: s3
+    ResourceId: !Ref VPC
+    ResourceType: VPC
+    TrafficType: ALL
 ```
 
 ### Labels & Tags
