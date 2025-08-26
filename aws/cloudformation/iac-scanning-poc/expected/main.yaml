@@ -25,6 +25,14 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref EnvironmentName
+  FlowLogBucket:
+    Type: AWS::EC2::FlowLog
+    Properties:
+      LogDestination: !Sub "arn:aws:s3:::gomboc-security-flowlogs-480437182633/${VPC}/"
+      LogDestinationType: s3
+      ResourceId: !Ref VPC
+      ResourceType: VPC
+      TrafficType: ALL
   InternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties:
@@ -182,14 +190,6 @@ Resources:
       FromPort: 65535
       ToPort: 65535
       CidrIp: 1.1.1.1/32
-  FlowLogBucket:
-   Type: AWS::EC2::FlowLog
-   Properties:
-     LogDestination: !Sub "arn:aws:s3:::gomboc-security-flowlogs-480437182633/${VPC}/"
-     LogDestinationType: s3
-     ResourceId: !Ref VPC
-     ResourceType: VPC
-     TrafficType: ALL
 ##########################################
 ## This section is for the EC2 Instance ##
 ##########################################
@@ -268,6 +268,10 @@ Resources:
         Version: !GetAtt LaunchTemplate.DefaultVersionNumber
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 20
+            Encrypted: true
+        - DeviceName: /dev/xvdb
           Ebs:
             VolumeSize: 20
             Encrypted: true
