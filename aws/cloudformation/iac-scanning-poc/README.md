@@ -14,7 +14,8 @@ This is a combination of several scenarios:
 
 The expected results assumes the following:
 
-1. The VPC flowlog destination is gomboc specific bucket with the VPC id as the prefix:
+1. The VPC flowlog object name is "FlowLogBucket"
+2. The VPC flowlog destination is gomboc specific bucket with the VPC id as the prefix:
   1. `!Sub "arn:aws:s3:::gomboc-security-flowlogs-480437182633/${VPC}/"`
-2. The VPC SG safe port is "65535"
-3. The VPC SG safe CIDR is "1.1.1.1/32"
+3. The VPC SG safe port is "65535"
+4. The VPC SG safe CIDR is "1.1.1.1/32"

@@ -164,7 +164,6 @@ Resources:
       GroupName: !Ref EnvironmentName
       GroupDescription: The security group for our test
       VpcId: !Ref VPC
-# Uncomment this to allow all traffic to the EC2 instance and create the misconfiguration
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 0
@@ -255,7 +254,10 @@ Resources:
         - DeviceName: /dev/xvda
           Ebs:
             VolumeSize: 20
-            # Encrypted: true # Uncomment this to "fix" the issue of a non-encrypted drive
+            Encrypted: false
+        - DeviceName: /dev/xvdb
+          Ebs:
+            VolumeSize: 20
 #######################################
 ## This section is for the S3 Bucket ##
 #######################################
@@ -268,11 +270,6 @@ Resources:
         BlockPublicPolicy: false
         IgnorePublicAcls: false
         RestrictPublicBuckets: false
-# Uncomment this section to make an encrypted bucket
-      # BucketEncryption:
-      #   ServerSideEncryptionConfiguration:
-      #     - ServerSideEncryptionByDefault:
-      #         SSEAlgorithm: AES256
 ############################################
 ## This section is for the DynamoDB table ##
 ############################################
