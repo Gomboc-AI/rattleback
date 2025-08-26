@@ -18,3 +18,12 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref EnvironmentName
+
+  FlowLog_for_VPC:
+    Type: AWS::EC2::FlowLog
+    Properties:
+      LogDestination: !Sub "arn:aws:s3:::gomboc-security-flowlogs-480437182633/${VPC}/"
+      LogDestinationType: s3
+      ResourceId: !Ref VPC
+      ResourceType: VPC
+      TrafficType: ALL
