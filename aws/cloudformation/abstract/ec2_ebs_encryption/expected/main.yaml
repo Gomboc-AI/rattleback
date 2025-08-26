@@ -1,0 +1,18 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  Linux:
+    Type: AWS::EC2::Instance
+    Properties:
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 20
+            Encrypted: true
+        - DeviceName: /dev/xvdb
+          Ebs:
+            VolumeSize: 20
+            Encrypted: true
