@@ -14,5 +14,5 @@ Resources:
             Encrypted: true
         - DeviceName: /dev/xvdb
           Ebs:
-            VolumeSize: 20
             Encrypted: true
+            VolumeSize: 20
