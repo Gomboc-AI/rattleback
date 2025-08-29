@@ -288,4 +288,4 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
       SSESpecification:
-        SSEEnabled: false # swap to true to make it encrypted
+        SSEEnabled: false

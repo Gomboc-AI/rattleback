@@ -269,8 +269,8 @@ Resources:
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
-            VolumeSize: 20
             Encrypted: true
+            VolumeSize: 20
         - DeviceName: /dev/xvdb
           Ebs:
             VolumeSize: 20
