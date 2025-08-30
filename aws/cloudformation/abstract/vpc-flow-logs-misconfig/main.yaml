@@ -27,3 +27,12 @@ Resources:
       ResourceId: !Ref VPC
       ResourceType: VPC
       TrafficType: ALL
+
+  DefaultSG:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !GetAtt VPC.DefaultSecurityGroup
+      IpProtocol: tcp
+      FromPort: 65535
+      ToPort: 65535
+      CidrIp: 1.1.1.1/32
