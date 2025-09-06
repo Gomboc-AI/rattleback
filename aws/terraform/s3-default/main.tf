@@ -34,10 +34,6 @@ resource "aws_s3_bucket_ownership_controls" "uut" {
 resource "aws_s3_bucket_public_access_block" "uut" {
   bucket = aws_s3_bucket.uut.id
 
-  block_public_acls       = !local.public
-  block_public_policy     = !local.public
-  ignore_public_acls      = !local.public
-  restrict_public_buckets = !local.public
 }
 
 # The ACL needs to be set in an object to ensure the access block and ownership
