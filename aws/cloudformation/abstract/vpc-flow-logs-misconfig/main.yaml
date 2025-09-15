@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  EnvironmentName:
+    Description: An environment name that is prefixed to resource names
+    Type: String
+    Default: iac-scanning-poc-cf
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Ref EnvironmentName
+
+  FlowLog_for_VPC:
+    Type: AWS::EC2::FlowLog
+    Properties:
+      LogDestination: arn:aws:s3:::my_bucket/vpc/flow-logs
+      LogDestinationType: s3
+      ResourceId: !Ref VPC
+      ResourceType: VPC
+      TrafficType: ALL
+
+  DefaultSG:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !GetAtt VPC.DefaultSecurityGroup
+      IpProtocol: tcp
+      FromPort: 65535
+      ToPort: 65535
+      CidrIp: 1.1.1.1/32
