@@ -24,12 +24,7 @@ resource "aws_s3_bucket" "uut" {
   force_destroy = true
 }
 resource "aws_s3_bucket_ownership_controls" "uut" {
-  bucket = aws_s3_bucket.uut.id
 
-  rule {
-    # This is needed for the ACLs to be valid
-    object_ownership = "BucketOwnerPreferred"
-  }
 }
 resource "aws_s3_bucket_public_access_block" "uut" {
   bucket = aws_s3_bucket.uut.id
@@ -59,4 +54,10 @@ resource "aws_s3_object" "uut" {
 
   key    = "helloworld"
   source = "files/test.txt"
+}
+resource "aws_s3_bucket_versioning" "my_aws_s3_bucket_versioning_aws_s3_bucket_uut" {
+  bucket = aws_s3_bucket.uut.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
