@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../../../gomboc-schema/test-case.yaml
+
+name: Avoid bindings to system:anonymous
+
+provider: GCP
+iac:
+  language: terraform
+  version: v1.5.8
+
+canBeApplied: true
+
+benchmarkRecommendations:
+  - id: "4.1.8"
+    name: "Avoid bindings to system:anonymous"
+    benchmark: CIS Google Kubernetes Engine (GKE) Autopilot Benchmark
+    benchmarkVersion: v1.0.0
