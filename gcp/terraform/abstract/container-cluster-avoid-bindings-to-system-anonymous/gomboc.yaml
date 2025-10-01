@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../gomboc-schema/test-case.yaml
+# yaml-language-server: $schema=../../../../gomboc-schema/test-case.yaml
 
 name: Avoid bindings to system:anonymous
 
@@ -7,7 +7,7 @@ iac:
   language: terraform
   version: v1.5.8
 
-canBeApplied: true
+canBeApplied: false
 
 benchmarkRecommendations:
   - id: "4.1.8"
