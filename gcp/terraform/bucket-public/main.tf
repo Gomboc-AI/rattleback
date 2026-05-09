@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "uut" {
-  name          = var.bucket_name
+  name          = var.bucket_name_chris_test
   location      = var.bucket_location
   force_destroy = true
 }
