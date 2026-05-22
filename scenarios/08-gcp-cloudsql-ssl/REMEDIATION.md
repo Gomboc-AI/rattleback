@@ -4,7 +4,7 @@
 
 ## Finding
 
-Cloud SQL instance `projects/acme-prod-infra/instances/orders-mysql-prod` does not require SSL connections and has authorized network `0.0.0.0/0` (open to the entire internet). 
+Cloud SQL instance `projects/acme-prod-infra/instances/orders-mysql-prod` does not require SSL connections and has authorized network `0.0.0.0/0` (open to the entire internet).
 
 ## Required Action
 
