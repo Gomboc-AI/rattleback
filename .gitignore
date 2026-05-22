@@ -8,3 +8,7 @@
 .terraform*
 *.plan
 *.out
+
+
+#Ignore cursor AI rules
+.cursor/rules/codacy.mdc
